@@ -1,13 +1,7 @@
-import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+'use client';
+
 import SiteNav from '../site-nav';
-
-const SoldHomesMapInteractive = dynamic(() => import('../sold-homes-map-interactive'), { ssr: false });
-
-export const metadata: Metadata = {
-  title: 'Kaart met verkopen | Wildschut Makelaar',
-  description: 'Interactieve kaart met al onze verkochte woningen in Amsterdam-Noord en Landsmeer.',
-};
+import SoldHomesMapInteractive from '../sold-homes-map-interactive';
 
 export default function KaartPage() {
   return (
