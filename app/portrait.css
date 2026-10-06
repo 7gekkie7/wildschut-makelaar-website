@@ -1,0 +1,8 @@
+.about-visual { padding:0; background:var(--ink); color:white; }
+.about-visual::after { display:none; }
+.about-visual::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(10,27,46,.03) 32%,rgba(10,27,46,.88) 100%); }
+.about-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 32%; }
+.about-visual-copy { position:relative; z-index:2; width:100%; min-height:440px; padding:42px; display:flex; flex-direction:column; justify-content:space-between; }
+.about-visual-copy p { font-size:clamp(40px,4vw,62px); font-weight:600; letter-spacing:-.06em; line-height:.92; margin:0; }
+.about-visual-copy span { max-width:180px; color:#e1ebf1; line-height:1.45; font-size:14px; }
+@media (max-width:760px) { .about-visual-copy { min-height:300px; padding:28px; } }

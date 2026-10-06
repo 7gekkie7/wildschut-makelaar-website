@@ -1,0 +1,20 @@
+.foundation-section { max-width:1196px; margin:0 auto; padding:0 42px 110px; display:grid; grid-template-columns:1fr 1fr; gap:90px; }
+.foundation-section > div:first-child { padding:48px 42px; background:var(--blue); }
+.foundation-section h2 { font-size:clamp(38px,4.5vw,60px); line-height:1.04; margin:0; }
+.foundation-copy { align-self:center; }
+.foundation-copy p,.service-intro > div:last-child p { color:var(--ink-soft); line-height:1.65; font-size:17px; }
+.foundation-copy .text-link { display:inline-block; margin-top:10px; }
+.service-hero { max-width:1196px; margin:auto; padding:115px 42px 125px; background:linear-gradient(120deg,var(--blue) 0%,var(--blue) 66%,var(--paper) 66%); }
+.service-hero h1 { max-width:900px; }
+.service-hero > p:not(.eyebrow) { max-width:580px; color:var(--ink-soft); font-size:19px; line-height:1.6; margin-bottom:34px; }
+.service-intro { max-width:1196px; margin:auto; padding:100px 42px; display:grid; grid-template-columns:1.1fr .9fr; gap:90px; }
+.service-intro h2,.service-contact h2 { font-size:clamp(38px,4.5vw,60px); line-height:1.04; margin:0; }
+.service-contact { background:var(--ink); color:white; padding:100px max(42px,calc((100vw - 1196px)/2)); }
+.service-contact .eyebrow { color:#e8a486; }
+.service-contact > p:not(.eyebrow) { max-width:510px; color:#c2d1db; font-size:18px; line-height:1.6; margin:24px 0 30px; }
+.service-contact .button-primary { background:white; color:var(--ink); }
+@media (max-width:760px) {
+  .foundation-section,.service-intro { padding:70px 22px; grid-template-columns:1fr; gap:32px; }
+  .foundation-section > div:first-child { padding:38px 28px; }
+  .service-hero,.service-contact { padding:70px 22px; }
+}

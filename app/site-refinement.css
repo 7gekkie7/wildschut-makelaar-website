@@ -1,0 +1,48 @@
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif; }
+h1,h2,h3 { letter-spacing:-.055em; }
+.site-header { position:sticky; top:0; z-index:10; border-bottom:1px solid rgba(22,45,74,.08); }
+nav { gap:23px; }
+nav a:not(.nav-cta) { opacity:1; }
+.services-nav { position:relative; }
+.services-nav summary { cursor:pointer; font-size:13px; font-weight:700; list-style:none; }
+.services-nav summary::-webkit-details-marker { display:none; }
+.services-nav summary::after { content:'+'; color:var(--accent); font-size:17px; margin-left:6px; vertical-align:-1px; }
+.services-nav[open] summary::after { content:'−'; }
+.services-menu { position:absolute; top:29px; left:-18px; min-width:180px; padding:12px 18px; background:var(--paper); border:1px solid var(--line); box-shadow:0 16px 35px rgba(22,45,74,.12); }
+.services-menu a { display:block; padding:9px 0; font-size:13px; }
+.nav-cta { background:var(--ink); color:white; border-color:var(--ink); transition:background .2s ease,color .2s ease; }
+.nav-cta:hover { background:transparent; color:var(--ink); }
+.hero { min-height:610px; padding-top:62px; padding-bottom:54px; }
+.hero-copy { max-width:580px; }
+.hero .intro { font-size:18px; max-width:420px; }
+.hero-actions { margin-top:31px; }
+.hero-visual { box-shadow:inset 0 0 0 1px rgba(255,255,255,.45); }
+.trust-strip { max-width:1196px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.trust-strip p { margin:0; padding:22px 25px; color:var(--ink-soft); font-size:14px; line-height:1.4; }
+.trust-strip p + p { border-left:1px solid var(--line); }
+.trust-strip strong { color:var(--ink); display:block; font-size:15px; margin-bottom:3px; }
+.intro-section { padding-top:76px; padding-bottom:62px; }
+.intro-section h2 { max-width:610px; }
+.services { padding-bottom:100px; }
+.service-card { min-height:300px; padding:38px; border-top:3px solid transparent; transition:transform .2s ease,border-color .2s ease; }
+.service-card:hover { transform:translateY(-5px); border-top-color:var(--accent); }
+.service-card h3 { font-size:33px; }
+.about { padding-top:12px; }
+.about-visual { background:var(--ink); color:white; }
+.about-visual::after { border-color:#58738d; }
+.about-visual span { color:#c2d1db; }
+.foundation-section { padding-bottom:116px; }
+.foundation-section > div:first-child { position:relative; overflow:hidden; }
+.foundation-section > div:first-child::after { content:''; position:absolute; width:260px; height:260px; border:1px solid #9eb8c8; border-radius:50%; right:-100px; bottom:-145px; }
+.foundation-section h2 { position:relative; z-index:1; }
+.partners { padding-top:98px; padding-bottom:98px; }
+.contact { border-top:1px solid rgba(22,45,74,.08); }
+@media (max-width:760px) {
+  .site-header { position:relative; }
+  .services-nav { display:none; }
+  .trust-strip { grid-template-columns:1fr; margin:0 22px; }
+  .trust-strip p { padding:17px 0; }
+  .trust-strip p + p { border-left:0; border-top:1px solid var(--line); }
+  .hero { padding-top:50px; }
+  .service-card:hover { transform:none; }
+}
