@@ -44,7 +44,7 @@ export default function Home() {
       </section>
 
       <section className="services" aria-label="Diensten">
-        {services.map((service) => <article className="service-card" key={service.title}><h3>{service.title}</h3><p>{service.text}</p><a href={service.href} target={service.external ? '_blank' : undefined} rel={service.external ? 'noreferrer' : undefined} aria-label={service.external ? 'Taxatie aanvragen' : `Meer over ${service.title.toLowerCase()}`}>{service.label} <b aria-hidden="true">→</b></a></article>)}
+        {services.map((service) => <article className="service-card" key={service.title}><h3>{service.title}</h3><p>{service.text}</p><a href={service.href} aria-label={`Meer over ${service.title.toLowerCase()}`}>{service.label} <b aria-hidden="true">→</b></a></article>)}
       </section>
 
       <section className="about" id="over-mij">
