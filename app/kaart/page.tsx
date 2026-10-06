@@ -1,7 +1,6 @@
 'use client';
 
 import SiteNav from '../site-nav';
-import SoldHomesMapInteractive from '../sold-homes-map-interactive';
 
 export default function KaartPage() {
   return (
@@ -14,10 +13,8 @@ export default function KaartPage() {
       <section style={{ maxWidth: '1196px', margin: '0 auto', padding: '60px 42px' }}>
         <p style={{ color: '#c66b4b', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 700, fontSize: '11px', margin: '0 0 18px' }}>Kaart</p>
         <h1 style={{ fontSize: 'clamp(56px, 7vw, 94px)', lineHeight: 0.96, marginBottom: '28px', fontWeight: 600, letterSpacing: '-0.045em', maxWidth: '900px' }}>Interactieve kaart<br /><em style={{ fontFamily: 'Georgia, serif', fontWeight: 400 }}>met al onze verkopen.</em></h1>
-        <p style={{ maxWidth: '560px', color: '#314b68', fontSize: '19px', lineHeight: 1.55, marginBottom: '34px' }}>Verken de kaart, zoom in op een wijk, en klik op de rode punten om meer informatie te zien over de woningen die we hebben verkocht in Amsterdam-Noord en Landsmeer.</p>
+        <p style={{ maxWidth: '560px', color: '#314b68', fontSize: '19px', lineHeight: 1.55, marginBottom: '34px' }}>De interactieve kaart is in voorbereiding. Neem contact op voor meer informatie over onze verkochte woningen in Amsterdam-Noord en Landsmeer.</p>
       </section>
-
-      <SoldHomesMapInteractive />
 
       <section style={{ maxWidth: '1196px', margin: '0 auto', padding: '100px 42px', borderTop: '1px solid #cfdce3' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr .8fr', gap: '80px' }}>
