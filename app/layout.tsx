@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: 'Wildschut Makelaar Taxateur | Amsterdam-Noord & Landsmeer',
   description: 'Persoonlijke begeleiding bij verkoop, aankoop en taxaties in Amsterdam-Noord en Landsmeer.',
   robots: {
-    index: false,
-    follow: false,
+    index: process.env.ALLOW_INDEXING !== 'false',
+    follow: process.env.ALLOW_INDEXING !== 'false',
   },
 };
 

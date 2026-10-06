@@ -1,86 +1,177 @@
 import ContactForm from './contact-form';
 import HouseValuePopup from './house-value-popup';
 import SiteNav from './site-nav';
-import SoldHomesMap from './sold-homes-map';
+import SoldHomesMapInteractive from './sold-homes-map-interactive';
 
 const services = [
   { title: 'Verkopen', text: 'Een doordachte verkoopstrategie, sterke presentatie en persoonlijke begeleiding van begin tot eind.', href: '/verkopen', label: 'Meer weten' },
   { title: 'Aankopen', text: 'Met lokale kennis en een scherp oog voor kansen help ik je met vertrouwen een woning aankopen.', href: '/aankopen', label: 'Meer weten' },
-  { title: 'Taxaties', text: 'Een heldere, onafhankelijke taxatie die je verder helpt bij je volgende financiële stap.', href: '/taxatie', label: 'Meer weten' },
+  { title: 'Taxaties', text: 'Een heldere, onafhankelijke taxatie die je verder helpt bij je volgende financiële stap.', href: '/taxatie', label: 'Taxatie aanvragen' },
+  { title: 'Waardebepaling', text: 'Gratis en vrijblijvend weten wat je woning in de huidige markt waard is.', href: '#waardebepaling', label: 'Aanvragen' },
+];
+
+const valueSteps = [
+  { n: '1', title: 'Je vult je gegevens in', text: 'Adres van de woning en wat je van de waardebepaling verwacht.' },
+  { n: '2', title: 'Mark neemt contact met je op', text: 'We spreken een moment af om je woning te bekijken.' },
+  { n: '3', title: 'Je krijgt een duidelijk antwoord', text: 'Een heldere uitleg van de geschatte waarde en waarop die is gebaseerd.' },
+];
+
+const areas = [
+  {
+    name: 'Amsterdam-Noord',
+    title: 'De stad, met ruimte om je heen.',
+    text: 'Van de levendige buurten rond het IJ tot de rust richting het noorden: ik ken de dynamiek van Noord.',
+    img: '/amsterdam-noord-overzicht.jpg',
+    href: '/makelaar-amsterdam-noord',
+  },
+  {
+    name: 'Landsmeer',
+    title: 'Dorps en groen, dichtbij de stad.',
+    text: 'Voor wie hier woont of wil wonen, maakt lokale kennis het verschil.',
+    img: '/landsmeer-twiske.jpg',
+    href: '/makelaar-landsmeer',
+  },
 ];
 
 export default function Home() {
   return (
-    <main>
-      <HouseValuePopup />
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Wildschut Makelaar Taxateur, naar boven"><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /></a>
-        <SiteNav />
-      </header>
+    <>
+      <SiteNav />
 
+      {/* Hero Section */}
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Amsterdam-Noord &amp; Landsmeer</p>
+          <p className="eyebrow">Makelaar en taxateur in Amsterdam-Noord &amp; Landsmeer</p>
           <h1>Jouw buurt.<br /><em>Mijn vak.</em></h1>
-          <p className="intro">Persoonlijke begeleiding bij verkoop, aankoop en taxaties. Met lokale kennis van Amsterdam-Noord en Landsmeer.</p>
-          <div className="hero-actions"><a className="button button-primary" href="#contact">Plan een kennismaking</a><a className="text-link" href="#diensten">Bekijk diensten <span aria-hidden="true">→</span></a></div>
+          <p className="intro">Persoonlijke begeleiding bij verkoop, aankoop en taxaties. Met 25 jaar lokale kennis van Amsterdam-Noord en Landsmeer.</p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#waardebepaling">Gratis waardebepaling</a>
+            <a className="button button-secondary" href="#contact">Plan een kennismaking</a>
+          </div>
+          <p style={{ margin: '22px 0 0', fontSize: '14px', color: '#314b68' }}>
+            Liever direct bellen? <a href="tel:+31642010299" style={{ fontWeight: '700', color: '#162d4a', textDecoration: 'underline', textDecorationColor: '#c66b4b', textUnderlineOffset: '4px' }}>06 – 42 01 02 99</a>
+          </p>
         </div>
-        <div className="hero-visual" aria-label="Amsterdam-Noord en Landsmeer">
-          <div className="map-copy"><span>Thuis in</span><strong>Amsterdam-Noord<br />&amp; Landsmeer</strong></div>
-          <div className="map-line map-line-one" /><div className="map-line map-line-two" /><div className="map-line map-line-three" />
-          <div className="map-dot map-dot-one" /><div className="map-dot map-dot-two" /><div className="water-label">Het IJ</div>
+        <div className="hero-visual" aria-label="Werkgebied kaart">
+          <SoldHomesMapInteractive />
+          <div className="map-label">
+            <span>Werkgebied</span>
+            <strong>Amsterdam-Noord, Landelijk Noord,<br />Landsmeer &amp; Oostzaan</strong>
+          </div>
         </div>
       </section>
 
+      {/* Trust Strip */}
       <section className="trust-strip" aria-label="Waar Wildschut Makelaar voor staat">
         <p><strong>25 jaar ervaring</strong>Makelaardij en taxaties</p>
-        <p><strong>Amsterdam-Noord &amp; Landsmeer</strong>Daar ligt mijn focus</p>
-        <p><strong>Één vast aanspreekpunt</strong>Direct contact met Mark</p>
+        <p><strong>Eén vast aanspreekpunt</strong>Direct contact met Mark</p>
+        <p><strong>NVM MVA</strong>Aangesloten makelaar</p>
+        <p><strong>NRVT-geregistreerd</strong>Taxaties gevalideerd via NWWI</p>
       </section>
 
+      {/* Services Intro */}
       <section className="intro-section" id="diensten">
-        <div><p className="eyebrow">Wildschut Makelaar Taxateur</p><h2>Een makelaar die de buurt kent en jou leert kennen.</h2></div>
+        <div><p className="eyebrow">Diensten</p><h2>Een makelaar die de buurt kent en jou leert kennen.</h2></div>
         <p className="body-copy">Of je nu een woning verkoopt, op zoek bent naar een nieuw thuis of een taxatie nodig hebt: je hebt één vast aanspreekpunt. Ik combineer persoonlijke aandacht met de expertise en slagkracht van <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</p>
       </section>
 
+      {/* Services Cards */}
       <section className="services" aria-label="Diensten">
         {services.map((service) => <article className="service-card" key={service.title}><h3>{service.title}</h3><p>{service.text}</p><a href={service.href} aria-label={`Meer over ${service.title.toLowerCase()}`}>{service.label} <b aria-hidden="true">→</b></a></article>)}
       </section>
 
+      {/* About Me Section */}
       <section className="about" id="over-mij">
-        <div className="about-visual"><img src="/mark-wildschut.jpg" alt="Mark Wildschut, makelaar en taxateur" /><div className="about-visual-copy"><p>Mark<br />Wildschut</p><span>Persoonlijk, helder en betrokken.</span></div></div>
-        <div className="about-copy"><p className="eyebrow">Over mij</p><h2>Je werkt direct met Mark.</h2><p>Ik ben geboren in Hoorn en opgegroeid in West-Friesland. In 2001 begon mijn loopbaan in de makelaardij via een stage in Purmerend. Daarna kwam ik in Amsterdam-Noord terecht, waar ik werkte aan het Buikslotermeerplein en ook zelf naar Amsterdam verhuisde.</p><p>De combinatie van West-Friese nuchterheid en Amsterdamse branie voelde voor mij direct goed. In Noord voelde ik mij meteen op mijn gemak.</p><p>In 2007 verhuisde ik van Amsterdam naar Landsmeer. Een jaar later ging ik werken bij een Landsmeers makelaarskantoor met vestigingen in Amsterdam. Sinds 2014 werk ik als zelfstandig makelaar en taxateur. Met inmiddels 25 jaar ervaring help ik je bij verkoop, aankoop en taxaties in Amsterdam-Noord en Landsmeer.</p><p>Ik werk vanuit huis in Landsmeer en vanuit kantoor in Amsterdam-Noord. Zo ben ik dichtbij voor klanten in beide gebieden en combineer ik lokale betrokkenheid met een professioneel netwerk.</p><p>Ik werk zelfstandig, met de ervaring, systemen en het netwerk van <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a> achter mij.</p><p>Buiten mijn werk ben ik vader van twee zoons. In mijn vrije tijd racefiets ik, kickboks ik, golf ik en schaats ik graag.</p><a className="text-link" href="#contact">Maak kennis <span aria-hidden="true">→</span></a></div>
+        <div className="about-copy"><p className="eyebrow">Over mij</p><h2>Je werkt direct met Mark.</h2><p>Ik ben geboren in Hoorn en begon in 2001 in de makelaardij. Via het Buikslotermeerplein kwam ik in Amsterdam-Noord terecht, sinds 2007 woon ik in Landsmeer. Sinds 2014 werk ik als zelfstandig makelaar en taxateur.</p><p>Ik werk vanuit huis in Landsmeer en vanuit kantoor in Amsterdam-Noord. Zo ben ik dichtbij voor klanten in beide gebieden.</p><a className="text-link" href="/over-mark">Lees mijn verhaal <span aria-hidden="true">→</span></a></div>
       </section>
 
+      {/* Areas Section */}
       <section className="areas" id="werkgebied">
         <div className="area-heading"><p className="eyebrow">Lokaal geworteld</p><h2>Amsterdam-Noord en Landsmeer. Daar ligt mijn focus.</h2></div>
-        <div className="area-grid"><article className="area-noord"><div><p className="area-kicker">Amsterdam-Noord</p><h3>De stad, met ruimte om je heen.</h3><p>Van de levendige buurten rond het IJ tot de rust richting het noorden: ik ken de dynamiek van Noord.</p><a href="/makelaar-amsterdam-noord">Makelaar in Amsterdam-Noord <b aria-hidden="true">→</b></a></div></article><article className="area-landsmeer"><div><p className="area-kicker">Landsmeer</p><h3>Dorps en groen, dichtbij de stad.</h3><p>Voor wie hier woont of wil wonen, maakt lokale kennis het verschil.</p><a href="/makelaar-landsmeer">Makelaar in Landsmeer <b aria-hidden="true">→</b></a></div></article></div>
-      </section>
-
-      <SoldHomesMap />
-
-      <section className="offer-preview" id="woningaanbod"><p className="eyebrow">Woningaanbod</p><h2>Binnenkort vind je hier mijn actuele aanbod.</h2><p>Op zoek naar een woning in Amsterdam-Noord of Landsmeer? Neem gerust alvast contact op.</p><a className="text-link" href="#contact">Laat weten wat je zoekt <span aria-hidden="true">→</span></a></section>
-
-      <section className="partners" id="samenwerking">
-        <p className="eyebrow">Sterk netwerk, persoonlijk contact</p>
-        <div className="partners-grid">
-          <article><p className="partner-kicker">Makelaarsondersteuning</p><h2>Powered by<br /><em><a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</em></h2><p>Wildschut Makelaar werkt zelfstandig, met de ervaring, systemen en het netwerk van <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a> achter zich.</p></article>
-          <article><p className="partner-kicker">Erfpacht</p><h2>Erfpacht<br /><em>begrijpelijk gemaakt.</em></h2><p>Erfpacht is voor consumenten niet altijd eenvoudig te doorgronden. Met <a className="partner-link" href="https://erfpachtkompas.nl" target="_blank" rel="noreferrer">Erfpachtkompas</a>, dat ik zelf ontwikkelde, krijg je een eerste helder inzicht in de aandachtspunten rond een woning.</p><a href="/erfpacht" className="text-link">Bekijk erfpacht <span aria-hidden="true">→</span></a></article>
-          <article><p className="partner-kicker">Financieel advies</p><h2>Een huis en<br /><em>een helder plan.</em></h2><p>Voor hypotheek- en financiële vraagstukken werk ik samen met Hypotheekvisie Buikslotermeerplein.</p></article>
+        <div className="area-grid">
+          {areas.map((area) => (
+            <article key={area.name} style={{ overflow: 'hidden' }}>
+              <img src={area.img} alt={area.name} style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', display: 'block' }} />
+              <div style={{ padding: '24px' }}>
+                <p className="area-kicker">{area.name}</p>
+                <h3>{area.title}</h3>
+                <p>{area.text}</p>
+                <a href={area.href}>Makelaar in {area.name} <b aria-hidden="true">→</b></a>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="foundation-section" aria-labelledby="fundering-titel">
-        <div><p className="eyebrow">Fundering</p><h2 id="fundering-titel">Goed kijken naar wat er onder de woning speelt.</h2></div>
-        <div className="foundation-copy"><p>Sinds april 2026 weegt funderingsrisico volgens de KCAF risicoklassen mee in iedere taxatie. Die risicoklassen zijn een belangrijk signaal, maar geen volledig oordeel over de woning of fundering.</p><p>Ik beoordeel vooraf welke informatie beschikbaar is en welke vragen nog openstaan. Bij vooroorlogse woningen en woningen in Amsterdam-Noord is die extra aandacht vaak belangrijk.</p><a className="text-link" href="/fundering">Meer over funderingsrisico <span aria-hidden="true">→</span></a></div>
+      {/* Value Section */}
+      <section id="waardebepaling" style={{ paddingTop: '96px', paddingBottom: '96px' }}>
+        <div style={{ maxWidth: '1196px', margin: '0 auto', padding: '0 42px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: '70px', alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow">Gratis waardebepaling</p>
+            <h2>Benieuwd wat jouw woning waard is?</h2>
+            <p style={{ color: '#314b68', fontSize: '18px', lineHeight: '1.6', margin: '0' }}>Ik kom langs, kijk naar je woning en de recente verkopen in je buurt, en vertel je wat ik ervan denk. Vrijblijvend.</p>
+          </div>
+          <div style={{ display: 'grid', gap: '22px', borderTop: '1px solid #cfdce3', paddingTop: '28px' }}>
+            {valueSteps.map((step) => (
+              <div key={step.n} style={{ display: 'grid', gridTemplateColumns: '48px 1fr', gap: '12px' }}>
+                <span style={{ fontSize: '36px', fontWeight: '600', color: '#c66b4b', lineHeight: '1' }}>{step.n}</span>
+                <div><h3 style={{ fontSize: '19px', fontWeight: '600', margin: '0 0 6px' }}>{step.title}</h3><p style={{ margin: '0', color: '#314b68', lineHeight: '1.55' }}>{step.text}</p></div>
+              </div>
+            ))}
+            <a href="#contact" className="button button-primary" style={{ justifySelf: 'start', marginTop: '6px' }}>Vraag je waardebepaling aan</a>
+          </div>
+        </div>
       </section>
 
+      {/* Erfpacht & Fundering */}
+      <section style={{ borderTop: '1px solid #cfdce3', paddingTop: '84px', paddingBottom: '84px' }}>
+        <div style={{ maxWidth: '1196px', margin: '0 auto', padding: '0 42px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: '60px' }}>
+          <div>
+            <p className="eyebrow">Erfpacht en fundering</p>
+            <h2>Goed kijken naar wat er onder en rond de woning speelt.</h2>
+          </div>
+          <div style={{ display: 'grid', gap: '26px' }}>
+            <div>
+              <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 8px' }}>Fundering</h3>
+              <p style={{ color: '#314b68', lineHeight: '1.6', margin: '0 0 8px' }}>Sinds april 2026 weegt funderingsrisico volgens de KCAF-risicoklassen mee in iedere taxatie. Bij vooroorlogse woningen en woningen in Amsterdam-Noord is extra aandacht vaak belangrijk.</p>
+              <a href="/fundering" className="text-link">Meer over funderingsrisico <span aria-hidden="true">→</span></a>
+            </div>
+            <div>
+              <h3 style={{ fontSize: '20px', fontWeight: '600', margin: '0 0 8px' }}>Erfpacht</h3>
+              <p style={{ color: '#314b68', lineHeight: '1.6', margin: '0 0 8px' }}>Met <a href="https://erfpachtkompas.nl" target="_blank" rel="noreferrer" className="partner-link">Erfpachtkompas</a>, dat ik zelf ontwikkelde, krijg je een eerste helder inzicht in de aandachtspunten rond een woning.</p>
+              <a href="/erfpacht" className="text-link">Bekijk erfpacht <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
       <section className="contact" id="contact">
-        <div className="contact-copy"><p className="eyebrow">Vrijblijvend kennismaken</p><h2>Vertel me waar je mee bezig bent.</h2><p>Ik denk graag met je mee over verkoop, aankoop, taxatie of erfpacht in Amsterdam-Noord en Landsmeer.</p></div>
-        <ContactForm />
+        <div style={{ maxWidth: '1196px', margin: '0 auto', padding: '0 42px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: '80px' }}>
+          <div>
+            <p className="eyebrow">Vrijblijvend kennismaken</p>
+            <h2>Vertel me waar je mee bezig bent.</h2>
+            <p style={{ color: '#314b68', maxWidth: '440px', fontSize: '17px', lineHeight: '1.6', margin: '0 0 34px' }}>Ik reageer binnen één werkdag. Bellen of appen kan ook.</p>
+            <div style={{ display: 'grid', gap: '14px', fontSize: '15px' }}>
+              <a href="tel:+31642010299" style={{ display: 'grid', gridTemplateColumns: '90px 1fr', color: 'inherit', textDecoration: 'none' }}><span style={{ color: '#314b68' }}>Telefoon</span><strong>06 – 42 01 02 99</strong></a>
+              <a href="https://wa.me/31642010299" style={{ display: 'grid', gridTemplateColumns: '90px 1fr', color: 'inherit', textDecoration: 'none' }}><span style={{ color: '#314b68' }}>WhatsApp</span><strong>Stuur een bericht</strong></a>
+              <a href="mailto:mark@wildschutmakelaar.nl" style={{ display: 'grid', gridTemplateColumns: '90px 1fr', color: 'inherit', textDecoration: 'none' }}><span style={{ color: '#314b68' }}>E-mail</span><strong>mark@wildschutmakelaar.nl</strong></a>
+              <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr' }}><span style={{ color: '#314b68' }}>Kantoor</span><span>Assumburg 16, 1121 EA Landsmeer</span></div>
+            </div>
+          </div>
+          <div style={{ alignSelf: 'center' }}>
+            <ContactForm />
+          </div>
+        </div>
       </section>
 
-      <footer><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /><p>Zelfstandig makelaar en taxateur, powered by <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</p><p>Amsterdam-Noord &amp; Landsmeer</p></footer>
-    </main>
+      <HouseValuePopup />
+      <footer style={{ background: '#162d4a', color: '#c2d1db', fontSize: '13px', padding: '56px 42px 40px', textAlign: 'center' }}>
+        <p style={{ color: '#fff', fontWeight: '700', fontSize: '15px', margin: '0 0 10px' }}>Wildschut Makelaar Taxateur</p>
+        <p style={{ lineHeight: '1.6', margin: '0' }}>Zelfstandig makelaar en taxateur, powered by <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</p>
+        <p style={{ margin: '16px 0 0', fontSize: '13px' }}>Assumburg 16, 1121 EA Landsmeer | KvK 60126906 | NRVT RT820909298</p>
+        <p style={{ margin: '16px 0 0', fontSize: '13px' }}><a href="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacyverklaring</a> · <a href="/terms" style={{ color: 'inherit', textDecoration: 'none' }}>Algemene voorwaarden</a></p>
+      </footer>
+    </>
   );
 }

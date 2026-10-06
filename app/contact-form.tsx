@@ -8,15 +8,18 @@ export default function ContactForm() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setIsLoading(true);
     setMessage(null);
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     const data = {
       naam: formData.get('naam'),
       email: formData.get('email'),
       telefoon: formData.get('telefoon') || '',
       bericht: formData.get('bericht'),
+      onderwerp: formData.get('onderwerp') || 'Algemeen',
+      adres: formData.get('adres') || '',
     };
 
     try {
@@ -28,7 +31,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setMessage({ type: 'success', text: 'Bedankt! Ik neem snel contact met je op.' });
-        e.currentTarget.reset();
+        form.reset();
       } else {
         setMessage({ type: 'error', text: 'Er ging iets mis. Probeer het later opnieuw.' });
       }
@@ -65,7 +68,6 @@ export default function ContactForm() {
           {message.text}
         </p>
       )}
-      <p className="form-note">Het formulier wordt bij publicatie gekoppeld aan jouw e-mailadres.</p>
     </form>
   );
 }
