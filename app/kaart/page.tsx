@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import SiteNav from '../site-nav';
-import SoldHomesMapInteractive from '../sold-homes-map-interactive';
+
+const SoldHomesMapInteractive = dynamic(() => import('../sold-homes-map-interactive'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Kaart met verkopen | Wildschut Makelaar',
