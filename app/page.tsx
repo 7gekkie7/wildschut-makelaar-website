@@ -1,7 +1,12 @@
+import dynamic from 'next/dynamic';
 import ContactForm from './contact-form';
 import HouseValuePopup from './house-value-popup';
 import SiteNav from './site-nav';
-import SoldHomesMapInteractive from './sold-homes-map-interactive';
+
+const SoldHomesMapInteractive = dynamic(
+  () => import('./sold-homes-map-interactive'),
+  { ssr: false }
+);
 
 const services = [
   { title: 'Verkopen', text: 'Een doordachte verkoopstrategie, sterke presentatie en persoonlijke begeleiding van begin tot eind.', href: '/verkopen', label: 'Meer weten' },
