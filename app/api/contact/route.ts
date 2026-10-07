@@ -1,7 +1,3 @@
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
     const body = await request.json() as any;
@@ -10,10 +6,24 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Vereiste velden ontbreken' }, { status: 400 });
     }
 
-    const subject = body.onderwerp || 'Algemeen';
-    const emailSubject = `Nieuw contactformulier: ${subject}`;
-    
-    const emailContent = `Nieuw bericht van ${body.naam}
+    // Log submission (for now without Resend)
+    console.log('Contact form submission:', {
+      naam: body.naam,
+      email: body.email,
+      telefoon: body.telefoon,
+      onderwerp: body.onderwerp,
+      adres: body.adres,
+      bericht: body.bericht,
+    });
+
+    // Try to send email with Resend if configured
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const { Resend } = await import('resend');
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        
+        const subject = body.onderwerp || 'Algemeen';
+        const emailContent = `Nieuw bericht van ${body.naam}
 
 Onderwerp: ${subject}
 ${body.adres ? `Adres: ${body.adres}` : ''}
@@ -25,20 +35,23 @@ ${body.telefoon ? `Telefoon: ${body.telefoon}` : ''}
 Bericht:
 ${body.bericht}`;
 
-    if (!process.env.RESEND_API_KEY) {
-      console.log('Contact form submission (Resend not configured):', body);
-      return Response.json({ success: true });
+        const data = await resend.emails.send({
+          from: 'Wildschut Makelaar <formulier@wildschutmakelaar.nl>',
+          to: process.env.CONTACT_EMAIL || 'mark@wildschutmakelaar.nl',
+          subject: `Nieuw contactformulier: ${subject}`,
+          text: emailContent,
+        });
+
+        console.log('Email sent:', data);
+        return Response.json({ success: true, emailId: data.id });
+      } catch (emailError) {
+        console.error('Resend error:', emailError);
+        // Fall through to return success anyway
+        return Response.json({ success: true, note: 'Form received (email service error)' });
+      }
     }
 
-    const data = await resend.emails.send({
-      from: 'Wildschut Makelaar <formulier@wildschutmakelaar.nl>',
-      to: process.env.CONTACT_EMAIL || 'mark@wildschutmakelaar.nl',
-      subject: emailSubject,
-      text: emailContent,
-    });
-
-    console.log('Email sent:', data);
-    return Response.json({ success: true, emailId: data.id });
+    return Response.json({ success: true, note: 'Form received (email not configured)' });
   } catch (error) {
     console.error('Contact form error:', error);
     return Response.json({ error: 'Server error' }, { status: 500 });
