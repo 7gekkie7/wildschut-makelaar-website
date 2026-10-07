@@ -35,15 +35,16 @@ ${body.telefoon ? `Telefoon: ${body.telefoon}` : ''}
 Bericht:
 ${body.bericht}`;
 
-        const data = await resend.emails.send({
+        const result = await resend.emails.send({
           from: 'Wildschut Makelaar <formulier@wildschutmakelaar.nl>',
           to: process.env.CONTACT_EMAIL || 'mark@wildschutmakelaar.nl',
           subject: `Nieuw contactformulier: ${subject}`,
           text: emailContent,
         });
 
-        console.log('Email sent:', data);
-        return Response.json({ success: true, emailId: data.id });
+        console.log('Email sent:', result);
+        const emailId = (result as any)?.id || null;
+        return Response.json({ success: true, emailId });
       } catch (emailError) {
         console.error('Resend error:', emailError);
         // Fall through to return success anyway
