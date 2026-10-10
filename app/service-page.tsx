@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import SiteNav from './site-nav';
 
 type ServicePageProps = {
   eyebrow: string;
@@ -15,10 +14,6 @@ type ServicePageProps = {
 export default function ServicePage({ eyebrow, title, intro, heading, children, ctaLabel = 'Plan een kennismaking', ctaHref = '/#contact', external = false }: ServicePageProps) {
   return (
     <main className="service-page">
-      <header className="site-header">
-        <a className="brand" href="/" aria-label="Wildschut Makelaar Taxateur, naar home"><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /></a>
-        <SiteNav />
-      </header>
       <section className="service-hero">
         <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
@@ -34,7 +29,6 @@ export default function ServicePage({ eyebrow, title, intro, heading, children, 
         <p>Ik denk graag met je mee over jouw woning in Amsterdam-Noord of Landsmeer.</p>
         <a className="button button-primary" href="/#contact">Neem contact op</a>
       </section>
-      <footer><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /><p>Zelfstandig makelaar en taxateur, powered by <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</p><p>Amsterdam-Noord &amp; Landsmeer</p></footer>
     </main>
   );
 }

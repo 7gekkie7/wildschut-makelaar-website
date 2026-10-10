@@ -36,3 +36,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# bronbestanden logo's (niet nodig voor de site)
+/logo/
+tsconfig.tsbuildinfo

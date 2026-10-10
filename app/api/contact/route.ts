@@ -2,7 +2,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json() as any;
 
-    if (!body.naam || !body.email || !body.bericht) {
+    if (!body.naam || !(body.email || body.telefoon) || !body.bericht) {
       return Response.json({ error: 'Vereiste velden ontbreken' }, { status: 400 });
     }
 
@@ -29,7 +29,7 @@ Onderwerp: ${subject}
 ${body.adres ? `Adres: ${body.adres}` : ''}
 
 Naam: ${body.naam}
-Email: ${body.email}
+${body.email ? `Email: ${body.email}` : ''}
 ${body.telefoon ? `Telefoon: ${body.telefoon}` : ''}
 
 Bericht:
@@ -42,17 +42,19 @@ ${body.bericht}`;
           text: emailContent,
         });
 
-        console.log('Email sent:', result);
-        const emailId = (result as any)?.id || null;
-        return Response.json({ success: true, emailId });
+        if (result.error) {
+          console.error('Resend error:', result.error);
+          return Response.json({ error: 'Versturen mislukt' }, { status: 502 });
+        }
+        return Response.json({ success: true, emailId: result.data?.id ?? null });
       } catch (emailError) {
         console.error('Resend error:', emailError);
-        // Fall through to return success anyway
-        return Response.json({ success: true, note: 'Form received (email service error)' });
+        return Response.json({ error: 'Versturen mislukt' }, { status: 502 });
       }
     }
 
-    return Response.json({ success: true, note: 'Form received (email not configured)' });
+    console.error('RESEND_API_KEY ontbreekt: bericht is niet gemaild.');
+    return Response.json({ error: 'E-mail niet ingesteld' }, { status: 503 });
   } catch (error) {
     console.error('Contact form error:', error);
     return Response.json({ error: 'Server error' }, { status: 500 });

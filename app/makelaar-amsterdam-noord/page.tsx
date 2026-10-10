@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import SiteNav from '../site-nav';
 
 export const metadata: Metadata = {
   title: 'Makelaar Amsterdam-Noord | Wildschut Makelaar Taxateur',
@@ -9,10 +8,6 @@ export const metadata: Metadata = {
 export default function AmsterdamNoordPage() {
   return (
     <main className="local-page">
-      <header className="site-header">
-        <a className="brand" href="/" aria-label="Wildschut Makelaar Taxateur, naar home"><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /></a>
-        <SiteNav />
-      </header>
 
       <section className="local-hero local-hero-noord">
         <p className="eyebrow">Wildschut Makelaar Taxateur</p>

@@ -1,9 +1,7 @@
-import SiteNav from '../site-nav';
 
 export default function PrivacyPage() {
   return (
     <>
-      <SiteNav />
       <main style={{ maxWidth: '900px', margin: '0 auto', padding: '64px 42px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: '600', marginBottom: '32px' }}>Privacyverklaring</h1>
         

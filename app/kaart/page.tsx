@@ -1,14 +1,9 @@
 'use client';
 
-import SiteNav from '../site-nav';
 
 export default function KaartPage() {
   return (
     <main>
-      <header className="site-header">
-        <a className="brand" href="/" aria-label="Wildschut Makelaar Taxateur, naar home"><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /></a>
-        <SiteNav />
-      </header>
 
       <section style={{ maxWidth: '1196px', margin: '0 auto', padding: '60px 42px' }}>
         <p style={{ color: '#c66b4b', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 700, fontSize: '11px', margin: '0 0 18px' }}>Kaart</p>
@@ -28,11 +23,6 @@ export default function KaartPage() {
         </div>
       </section>
 
-      <footer style={{ width: '100%', margin: 0, padding: '36px max(42px, calc((100vw - 1196px)/2)) 46px', background: '#eaf3f8', display: 'grid', gridTemplateColumns: '1fr 1fr auto', alignItems: 'center', gap: '35px', color: '#314b68', fontSize: '12px' }}>
-        <img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" style={{ width: '185px' }} />
-        <p style={{ margin: 0 }}>Zelfstandig makelaar en taxateur, powered by <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline', textDecorationColor: '#c66b4b', textDecorationThickness: '1px', textUnderlineOffset: '4px' }}>De Haas Makelaars</a>.</p>
-        <p style={{ margin: 0 }}>Amsterdam-Noord &amp; Landsmeer</p>
-      </footer>
     </main>
   );
 }

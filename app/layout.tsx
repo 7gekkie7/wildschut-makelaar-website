@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
+import { Figtree } from 'next/font/google';
+import SiteHeader from './site-header';
+import SiteFooter from './site-footer';
 import './globals.css';
 import './service-pages.css';
 import './site-refinement.css';
 import './local-imagery.css';
 import './portrait.css';
 import './sold-homes-map.css';
+import './site.css';
+
+const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree' });
 
 export const metadata: Metadata = {
   title: 'Wildschut Makelaar Taxateur | Amsterdam-Noord & Landsmeer',
@@ -21,8 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl">
-      <body>{children}</body>
+    <html lang="nl" className={figtree.variable}>
+      <body>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import SiteNav from '../site-nav';
 
 export const metadata: Metadata = {
   title: 'Erfpacht in Amsterdam | Wildschut Makelaar Taxateur',
@@ -9,10 +8,6 @@ export const metadata: Metadata = {
 export default function ErfpachtPage() {
   return (
     <main className="erfpacht-page">
-      <header className="site-header">
-        <a className="brand" href="/" aria-label="Wildschut Makelaar Taxateur, naar home"><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /></a>
-        <SiteNav />
-      </header>
 
       <section className="erfpacht-hero">
         <p className="eyebrow">Erfpacht in Amsterdam</p>
@@ -47,7 +42,6 @@ export default function ErfpachtPage() {
         <details><summary>Is een berekening altijd definitief?</summary><p>Nee. Een indicatieve berekening is een hulpmiddel. De actuele erfpachtgegevens en het dossier van de woning blijven leidend.</p></details>
       </section>
 
-      <footer><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /><p>Zelfstandig makelaar en taxateur, powered by <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</p><p>Amsterdam-Noord &amp; Landsmeer</p></footer>
     </main>
   );
 }

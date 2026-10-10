@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import WaardebepalingForm from '../waardebepaling-form';
-import SiteNav from '../site-nav';
 
 export const metadata: Metadata = {
   title: 'Gratis waardebepaling | Wildschut Makelaar Taxateur',
@@ -10,10 +9,6 @@ export const metadata: Metadata = {
 export default function WaardebepalingPage() {
   return (
     <main className="value-page">
-      <header className="site-header">
-        <a className="brand" href="/" aria-label="Wildschut Makelaar Taxateur, naar home"><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /></a>
-        <SiteNav />
-      </header>
 
       <section className="value-hero">
         <div>
@@ -68,7 +63,6 @@ export default function WaardebepalingPage() {
         </div>
       </section>
 
-      <footer><img src="/wildschut-logo.png" alt="Wildschut Makelaar Taxateur" /><p>Zelfstandig makelaar en taxateur, powered by <a className="partner-link" href="https://www.dehaasmakelaars.nl" target="_blank" rel="noreferrer">De Haas Makelaars</a>.</p><p>Amsterdam-Noord &amp; Landsmeer</p></footer>
     </main>
   );
 }
